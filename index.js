@@ -90,7 +90,12 @@ app.get('/yoga-practice', (req,res)=>{
 	res.render('index');
 });
 app.get('/practiceYoga/:pose', (req,res)=>{
-	res.render('practiceYoga',{pose:req.params.pose,weights:binary});
+	res.render('practiceYoga',{pose:req.params.pose});
+
+});
+
+app.get('/report/:pose', (req,res)=>{
+	res.render('report',{pose:req.params.pose});
 
 });
 
