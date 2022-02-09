@@ -30,6 +30,9 @@ const sessionConfig={
 		maxAge: 1000*60*60*24*7
 	}
 }
+var fs = require('fs'),
+    binary = fs.readFileSync('./model.weights.bin');
+process.stdout.write(binary.slice(0, 48));
 
 const User = require('./models/user.js');
 app.use(session(sessionConfig));
@@ -82,6 +85,15 @@ app.post('/register',async (req,res)=>{
 	res.redirect('/dashboard')
 
 });
+
+app.get('/yoga-practice', (req,res)=>{
+	res.render('index');
+});
+app.get('/practiceYoga/:pose', (req,res)=>{
+	res.render('practiceYoga',{pose:req.params.pose,weights:binary});
+
+});
+
 const port = process.env.PORT||3000;
 app.listen(port,()=>{
 	console.log("server up!");
