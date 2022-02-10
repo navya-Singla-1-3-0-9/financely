@@ -19,7 +19,19 @@ body {
  
 }
 
+@keyframes drop-in {
+  from {
+   opacity: 0;
+   transform: translateY(-100px);
+  }
+  to {
+   opacity: 1;
+   transform: translate(0px);
+  }
+ }
+ 
 .page-content {
+  animation: drop-in 1s ease 500ms backwards;
   display: grid;
   place-items: center;
   grid-gap: 5rem;
@@ -125,6 +137,16 @@ body {
   background-image: url("../images/child.png");
   object-fit: cover;
   
+}
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 .content {
