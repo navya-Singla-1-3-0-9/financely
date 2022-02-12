@@ -34,7 +34,10 @@ var fs = require('fs'),
     binary = fs.readFileSync('./model.weights.bin');
 process.stdout.write(binary.slice(0, 48));
 
+let posts=[]
+const bodyParser = require("body-parser");
 const User = require('./models/user.js');
+const Journal = require('./models/journal.js');
 app.use(session(sessionConfig));
 app.use(flash());
 app.use(passport.initialize());
@@ -59,6 +62,7 @@ app.set('views',path.join(__dirname,'views'));
 app.get('/',(req,res)=>{
 	res.render("home");
 })
+
 
 app.get('/login',(req,res)=>{
 	res.render("login");
@@ -99,6 +103,46 @@ app.get('/report/:pose', (req,res)=>{
 
 });
 
+
+app.get('/createJournal',(req,res)=>{
+	res.render('createJournal');
+})
+
+
+
+app.post("/createJournals",function(req,res){
+
+	const journalTitle=req.body.title
+	const who=req.body.who
+	const where=req.body.where
+	const tag=req.body.tag
+	const subject=req.body.subject
+const post={
+	 journalTitle:req.body.title,
+	 who:req.body.who,
+	 where:req.body.where,
+	 tag:req.body.tag,
+	 subject:req.body.subject
+}
+const journal=new Journal({
+	journalTitle:req.body.title,
+	who:req.body.who,
+	where:req.body.where,
+	tag:req.body.tag,
+	subject:req.body.subject
+})
+journal.save(err=>{
+	err?console.log(err):res.render("journals",{posts:posts})
+})
+posts.push(post)
+res.redirect("journals")
+})
+
+app.get("/journals",function(req,res){
+	res.render("allJournals",{
+		posts:posts
+	})
+})
 const port = process.env.PORT||3000;
 app.listen(port,()=>{
 	console.log("server up!");
