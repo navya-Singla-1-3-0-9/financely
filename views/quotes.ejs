@@ -1,0 +1,33 @@
+<script>
+ var i=0;
+ var images=[]
+ var time=5000
+
+ images[0]="https://i.pinimg.com/736x/cd/a3/62/cda36260def5c23bc60f40fa1eb1b899.jpg"
+ images[1]="https://wallpapercave.com/wp/wp6826344.jpg"
+ images[2]="https://cutewallpaper.org/21/mental-wallpapers/Motivating-Mental-Health-Wallpapers-For-Your-Phone-OkToTalk.jpg"
+ images[3]="https://www.teahub.io/photos/full/57-579686_mental-illness-quote-mentally-unstable-quotes.jpg"
+ images[4]="https://wallpapercave.com/wp/wp4632443.jpg"
+images[5]="https://cdn.wallpapersafari.com/60/10/K8yMWQ.jpg"
+images[6]="https://images.unsplash.com/photo-1528716321680-815a8cdb8cbe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bG92ZSUyMHF1b3Rlc3xlbnwwfHwwfHw%3D&w=1000&q=80.jpg"
+images[7]="https://w0.peakpx.com/wallpaper/669/688/HD-wallpaper-anxiety-quotes-anxiety-calming-cbt-inspirational-mental-health-mindfulness-motivational-purple-quotes-word-art-thumbnail.jpg"
+images[8]="https://i.pinimg.com/originals/03/46/eb/0346eb1412df7033edca18758d5c1513.jpg"
+images[9]="https://wallpapercave.com/wp/wp4294148.jpg"
+images[10]="https://pbs.twimg.com/media/FBaHGndWQAATDEV?format=jpg&name=large"
+
+function changeImg()
+{
+    document.slide.src=images[i];
+
+    if(i<images.length-1)
+    {
+        i++;
+    }
+    else{
+        i=0;
+    }
+    setTimeout("changeImg()",time)
+}
+window.onload=changeImg
+</script>
+<img name="slide" width="100%" height="100%" image-rendering="pixelated">

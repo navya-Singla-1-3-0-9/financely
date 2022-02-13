@@ -126,7 +126,9 @@ app.get('/chatbot',(req,res)=>{
  res.send(dataToSend)
  });
 })
-
+app.get("/quotes",(req,res)=>{
+	res.render("quotes.ejs")
+})
 app.post("/createJournals",function(req,res){
 
 	const journalTitle=req.body.title
